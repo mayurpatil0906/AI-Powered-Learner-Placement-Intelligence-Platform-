@@ -1,11 +1,11 @@
 # AI-Powered Learner & Placement Intelligence Platform  
 ## Python Backend Microservice (FastAPI + ML Analytics)
-**----------------------------------------------------------------**
+
 ### Developed By
 **Mayur Patil**  
 Module Ownership: **Python Backend / AI-ML Analytics Service**  
 Branch: `feature/Python-Backend`
----------------------------------------------------------------
+
 # Project Overview
 
 The Python Backend Microservice is a core analytics and intelligence component of the **AI-Powered Learner & Placement Intelligence Platform**.
@@ -27,7 +27,6 @@ This module is responsible for handling:
 - NodeJS Notification Service
 - AWS Deployment Infrastructure
 
-**----------------------------------------------------------------**
 # Technologies Used
 
 ## Core Technologies
@@ -75,8 +74,6 @@ Responsibilities included:
 - API validation and debugging
 - Backend logging implementation
 
-**----------------------------------------------------------------**
-
 # Python Backend Architecture
 
 ```txt
@@ -100,7 +97,7 @@ app/
 │   ├── test_predict.py
 │   └── test_analytics.py
 ```
-**-----------------------------------------------------------------**
+
 # Machine Learning Functionality
 The Python backend supports placement readiness prediction using ML logic.
 
@@ -134,7 +131,6 @@ The backend includes complete API testing using:
 - Bulk prediction APIs
 - Validation testing
 - Error handling testing
-**-----------------------------------------------------------------**
 
 # Day-Wise Development Execution
 

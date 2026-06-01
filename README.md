@@ -1,68 +1,321 @@
-# AI-Powered-Learner-Placement-Intelligence-Platform-
-A full-stack, multi-service platform for learner tracking, placement prediction, and real-time notifications.
+# AI Learning Platform - Spring Boot Backend
+
+## Overview
+
+The AI Learning Platform Backend is a Spring Boot application designed to manage learners, assessments, placement drives, notifications, authentication, and machine learning-based placement predictions.
+
+The system provides REST APIs for learner management, placement tracking, assessment recording, dashboard analytics, notification delivery, and integration with an external machine learning prediction service.
+
+The backend follows a layered architecture consisting of controllers, services, repositories, DTOs, security components, and domain models.
+
+---
+
+## Features
+
+### Authentication & Authorization
+- JWT-based authentication
+- User registration and login
+- Role-based access control
+- Password encryption using Spring Security
+
+### Learner Management
+- Create, update, retrieve, and delete learners
+- Bulk learner import using CSV files
+- Track academic and professional information
+- Mentor assignment support
+
+### Assessment Management
+- Record learner assessments
+- Store scores, feedback, and evaluator information
+- Update assessment records
+- Automatic learner notifications on assessment updates
+
+### Placement Management
+- Manage placement drives
+- Apply learners to placement drives
+- Track application statuses
+- Monitor placement outcomes
+
+### Dashboard Analytics
+- Learner statistics
+- Placement statistics
+- GPA analytics
+- Course distribution reports
+- Placement trend visualization
+
+### Notification System
+- User-specific notifications
+- Unread notification tracking
+- Mark notifications as read
+- Real-time notification integration
+
+### Machine Learning Integration
+- Placement prediction support
+- External ML service integration
+- Prediction history tracking
+- Fallback prediction mechanism when ML service is unavailable
+
+---
 
 ## Architecture
 
-| Service | Tech Stack | Port |
-|---------|-----------|------|
-| **Spring Boot Backend** | Java 21, Spring Boot 4.x, JPA, JWT | 8080 |
-| **React Frontend** | React 19, Vite, TailwindCSS, Recharts | 3000 |
-| **Python ML Service** | FastAPI, scikit-learn, pandas | 8000 |
-| **Node Notification Service** | Express, Socket.IO, Winston | 5000 |
-| **PostgreSQL** | PostgreSQL 15 | 5432 |
+The backend follows a layered architecture:
 
-## Quick Start
-
-```bash
-# Start all services
-docker-compose up --build
-
-# Rebuild a single service
-docker-compose up --build spring-backend
-
-# View logs
-docker-compose logs -f spring-backend
-
-# Stop all
-docker-compose down
-
-# Stop and clear database
-docker-compose down -v
+```text
+Controller Layer
+        ↓
+Service Layer
+        ↓
+Repository Layer
+        ↓
+Database
 ```
 
-## Service URLs
+### Controller Layer
+Handles incoming HTTP requests and returns API responses.
 
-| Service | URL |
-|---------|-----|
-| Frontend | http://localhost:3000 |
-| Backend API | http://localhost:8080 |
-| ML Service | http://localhost:8000 |
-| Notifications | http://localhost:5000 |
-| PostgreSQL | localhost:5432 |
+### Service Layer
+Contains business logic and application workflows.
 
-## Individual Service Development
+### Repository Layer
+Provides data access using Spring Data JPA.
 
-```bash
-# Spring Boot (requires Java 21 + Maven)
-cd backend && ./mvnw spring-boot:run
+### Security Layer
+Handles:
+- Authentication
+- JWT validation
+- Authorization
 
-# React Frontend
-cd learningFrontend && npm install && npm run dev
+### External Services
+- Machine Learning Prediction Service
+- Notification Service
 
-# Python ML Service
-cd PythonBackend && pip install -r requirements.txt && uvicorn app.main:app --reload --port 8000
+---
 
-# Node Notifications
-cd nodejsBackend && npm install && npm run dev
-```
+## Technology Stack
 
-## Default Credentials
+### Backend Framework
+- Spring Boot
 
-| Role | Email | Password |
-|------|-------|----------|
-| Admin | admin@learner.com | admin123 |
+### Security
+- Spring Security
+- JWT Authentication
 
-## API Documentation
+### Database
+- MySQL
+- Spring Data JPA
+- Hibernate
 
-- Backend: http://localhost:8080/swagger-ui.html (if enabled)
-- ML Service: http://localhost:8000/docs (FastAPI auto-docs)
+### Build Tool
+- Maven
+
+### Testing
+- JUnit 5
+- Mockito
+
+### Logging
+- SLF4J
+- Logback
+
+---
+
+## Major Modules
+
+### Authentication Module
+
+Responsible for:
+
+- User registration
+- User login
+- JWT token generation
+- Password encryption
+- Role assignment
+
+### Learner Module
+
+Responsible for:
+
+- Learner profile management
+- CSV import processing
+- Mentor assignment
+- Academic data tracking
+
+### Assessment Module
+
+Responsible for:
+
+- Assessment creation
+- Score management
+- Feedback recording
+- Learner performance tracking
+
+### Placement Module
+
+Responsible for:
+
+- Placement drive management
+- Application processing
+- Placement status updates
+- Placement analytics
+
+### Dashboard Module
+
+Responsible for:
+
+- System-wide statistics
+- Placement trends
+- Learner distribution reports
+- KPI generation
+
+### Notification Module
+
+Responsible for:
+
+- Notification creation
+- Notification retrieval
+- Notification tracking
+- Push notification integration
+
+### Machine Learning Module
+
+Responsible for:
+
+- Placement prediction requests
+- ML service communication
+- Prediction storage
+- Fallback prediction generation
+
+---
+
+## Security Features
+
+### JWT Authentication
+
+Each authenticated user receives a JWT token which must be supplied with subsequent API requests.
+
+### Password Encryption
+
+Passwords are securely stored using encrypted hashes.
+
+### Role-Based Authorization
+
+Supported roles include:
+
+- ADMIN
+- MENTOR
+- LEARNER
+
+Access to APIs is controlled using Spring Security.
+
+---
+
+## Database Design
+
+The system manages the following primary entities:
+
+### User
+Stores authentication and authorization data.
+
+### Learner
+Stores learner academic and profile information.
+
+### Assessment
+Stores learner assessment results.
+
+### PlacementDrive
+Stores company placement opportunities.
+
+### PlacementApplication
+Tracks learner applications to placement drives.
+
+### Notification
+Stores user notifications.
+
+### MLPrediction
+Stores machine learning prediction results.
+
+---
+
+## External Integrations
+
+### Machine Learning Service
+
+The backend communicates with an external Python-based machine learning service to obtain placement predictions.
+
+Prediction requests include:
+
+- GPA
+- Skills
+- Experience
+- Course
+- Semester
+
+Returned predictions include:
+
+- Placement probability
+- Placeability status
+- Key influencing factors
+
+### Notification Service
+
+The backend can communicate with an external notification service for real-time user updates.
+
+---
+
+## Testing
+
+The backend includes unit testing using:
+
+- JUnit 5
+- Mockito
+
+Test coverage focuses on:
+
+- Authentication workflows
+- Placement workflows
+- Notification management
+- Dashboard analytics
+
+Example tested scenarios:
+
+- Successful placement application
+- Notification read status updates
+- Dashboard statistic generation
+- User registration validation
+- Duplicate placement application prevention
+
+---
+
+## Logging
+
+The application uses structured logging throughout the service layer.
+
+Examples include:
+
+- User registration events
+- Login attempts
+- Placement applications
+- Assessment updates
+- Notification delivery
+- ML prediction requests
+
+This helps support debugging, monitoring, and operational visibility.
+
+---
+
+## Future Enhancements
+
+- Real-time WebSocket notifications
+- Email notification support
+- Advanced placement recommendation engine
+- Resume analysis integration
+- ML model retraining pipeline
+- Interview scheduling module
+- Role-specific dashboards
+- Audit logging and activity tracking
+
+---
+
+## Project Goal
+
+The goal of the AI Learning Platform is to provide a centralized system that combines learner management, placement tracking, assessment monitoring, notification delivery, and machine learning-based career insights into a single platform that supports educational institutions and placement departments.

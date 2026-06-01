@@ -1,206 +1,68 @@
-# AI-Powered Learner & Placement Intelligence Platform  
-## Python Backend Microservice (FastAPI + ML Analytics)
+# AI-Powered-Learner-Placement-Intelligence-Platform-
+A full-stack, multi-service platform for learner tracking, placement prediction, and real-time notifications.
 
-### Developed By
-**Mayur Patil**  
-Module Ownership: **Python Backend / AI-ML Analytics Service**  
-Branch: `feature/Python-Backend`
+## Architecture
 
-# Project Overview
+| Service | Tech Stack | Port |
+|---------|-----------|------|
+| **Spring Boot Backend** | Java 21, Spring Boot 4.x, JPA, JWT | 8080 |
+| **React Frontend** | React 19, Vite, TailwindCSS, Recharts | 3000 |
+| **Python ML Service** | FastAPI, scikit-learn, pandas | 8000 |
+| **Node Notification Service** | Express, Socket.IO, Winston | 5000 |
+| **PostgreSQL** | PostgreSQL 15 | 5432 |
 
-The Python Backend Microservice is a core analytics and intelligence component of the **AI-Powered Learner & Placement Intelligence Platform**.
+## Quick Start
 
-This module is responsible for handling:
-- Learner analytics
-- Placement prediction
-- Batch performance analysis
-- Weak learner identification
-- ETL-style data processing
-- ML-based readiness prediction APIs
-- FastAPI microservice architecture
-- Backend testing using Pytest
+```bash
+# Start all services
+docker-compose up --build
 
-**The service integrates with:**
-- ReactJS Frontend
-- Spring Boot APIs
-- PostgreSQL Database
-- NodeJS Notification Service
-- AWS Deployment Infrastructure
+# Rebuild a single service
+docker-compose up --build spring-backend
 
-# Technologies Used
+# View logs
+docker-compose logs -f spring-backend
 
-## Core Technologies
+# Stop all
+docker-compose down
 
-- Python 3.12
-- FastAPI
-- PostgreSQL
-- SQLAlchemy
-- Pydantic
-- Uvicorn
-
-# Python Libraries Used
-
-```txt
-fastapi
-uvicorn
-sqlalchemy
-psycopg2-binary
-pydantic
-scikit-learn
-pandas
-numpy
-pytest
-httpx
-loguru
-python-multipart
-```
-# Responsibilities Handled by Mayur Patil
-
-The complete Python analytics and prediction microservice module was developed and managed by **Mayur Patil**.
-
-Responsibilities included:
-
-- FastAPI microservice setup
-- Database integration
-- Analytics API development
-- ML prediction service integration
-- Pydantic schema design
-- SQLAlchemy ORM implementation
-- Placement prediction logic
-- Batch analytics computation
-- Weak learner identification
-- Testing using Pytest
-- Mock database testing setup
-- API validation and debugging
-- Backend logging implementation
-
-# Python Backend Architecture
-
-```txt
-app/
-│
-├── main.py
-├── database.py
-├── models.py
-├── schemas.py
-├── ml_service.py
-├── logger.py
-│
-├── routes/
-│   ├── analytics.py
-│   ├── predict.py
-│   └── etl.py
-│
-├── tests/
-│   ├── conftest.py
-│   ├── test_main.py
-│   ├── test_predict.py
-│   └── test_analytics.py
+# Stop and clear database
+docker-compose down -v
 ```
 
-# Machine Learning Functionality
-The Python backend supports placement readiness prediction using ML logic.
+## Service URLs
 
-### Prediction Factors
-- GPA
-- Coding Skills
-- Communication Skills
-- Experience
-- Semester
-- Course
-- 
-### ML Workflow
-1. Learner data received from backend
-2. Data preprocessing
-3. Feature extraction
-4. ML prediction execution
-5. Probability generation
-6. Placement readiness classification
-7. Analytics storage
+| Service | URL |
+|---------|-----|
+| Frontend | http://localhost:3000 |
+| Backend API | http://localhost:8080 |
+| ML Service | http://localhost:8000 |
+| Notifications | http://localhost:5000 |
+| PostgreSQL | localhost:5432 |
 
-# Testing & Validation
-The backend includes complete API testing using:
-- Pytest
-- FastAPI TestClient
-- Mock Database Testing
+## Individual Service Development
 
-### Test Coverage
-- Health check API
-- Analytics APIs
-- Prediction APIs
-- Bulk prediction APIs
-- Validation testing
-- Error handling testing
+```bash
+# Spring Boot (requires Java 21 + Maven)
+cd backend && ./mvnw spring-boot:run
 
-# Day-Wise Development Execution
+# React Frontend
+cd learningFrontend && npm install && npm run dev
 
-## Day 1 — Python Service Setup
-Tasks completed:
-- FastAPI project initialization
-- PostgreSQL database connection
-- SQLAlchemy configuration
-- Base project architecture setup
-- API routing structure creation
-- Pydantic schema initialization
+# Python ML Service
+cd PythonBackend && pip install -r requirements.txt && uvicorn app.main:app --reload --port 8000
 
-## Day 2 — Core Backend Development
-Tasks completed:
-- Learner prediction API development
-- ML service integration
-- Database model creation
-- Prediction response handling
-- Logging implementation
-- API validation implementation
-- 
-## Day 3 — Analytics Development
-Tasks completed:
-- Top learners analytics API
-- Weak learners analytics API
-- Batch performance analytics
-- Placement trend computation
-- Data aggregation logic
-- Analytics response optimization
+# Node Notifications
+cd nodejsBackend && npm install && npm run dev
+```
 
-## Day 4 — Testing & Debugging
-Tasks completed:
-- Pytest configuration
-- Mock database creation
-- TestClient setup
-- Unit testing implementation
-- API debugging
-- Validation issue fixing
-- Response model testing
+## Default Credentials
 
-## Day 5 — Finalization & Integration
-Tasks completed:
-- Final API optimization
-- Code cleanup
-- Endpoint verification
-- GitHub integration
-- Documentation preparation
-- Final backend testing
-- Integration support for deployment
+| Role | Email | Password |
+|------|-------|----------|
+| Admin | admin@learner.com | admin123 |
 
-# Key Achievements
+## API Documentation
 
-- Successfully developed enterprise-level FastAPI microservice
-- Implemented ML-based placement prediction
-- Developed analytics computation APIs
-- Completed automated API testing
-- Designed scalable backend architecture
-- Integrated prediction and analytics workflows
-- Built production-ready backend structure
-
-# Conclusion
-The Python Backend Microservice successfully delivers the intelligence and analytics layer of the AI-Powered Learner & Placement Intelligence Platform.
-
-This module demonstrates:
-- Backend API development
-- Machine Learning integration
-- Real-world analytics processing
-- Enterprise microservice architecture
-- Automated testing
-- Scalable backend engineering
-
-The system enables educational institutions to make data-driven decisions regarding learner performance, mentor tracking, and placement readiness through intelligent analytics and ML-powered insights.
-
+- Backend: http://localhost:8080/swagger-ui.html (if enabled)
+- ML Service: http://localhost:8000/docs (FastAPI auto-docs)
